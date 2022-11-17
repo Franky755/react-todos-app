@@ -92,7 +92,7 @@ const Form = () => {
         ))}
       </div>
       {/* <div className='line-bottom'></div> */}
-      {/* summary job status */}
+      {/* summary job statuss */}
       {/* <div className='sum-status'>
         <span className='sum_total'>Total Job: 10</span>
         <span className='sum_not-done'>Not-done Job: </span>
