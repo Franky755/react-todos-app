@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
+import axios from 'axios';
 import '../style/form.css'
 
 const Form = () => {
@@ -8,6 +9,19 @@ const Form = () => {
   const [jobList, setJobList] = useState([])
   const [editJobIndex, setEditJobIndex] = useState()
   const [editJob, setEditJob] = useState()
+  const [data, setData] = useState({ hits: [] });
+
+  //Call API faker Job List
+  useEffect(() => {
+    async function fetchDataaa() {
+      const result = await axios(
+        'https://6375ef7db5f0e1eb85fd6d1b.mockapi.io/api/v1/todo',
+      );
+      // console.log(result)
+      setJobList(result.data)
+    }
+    fetchDataaa();
+  }, []);
 
   useEffect(() => {
     setEditJob(jobList.find((job, index) => index === editJobIndex))
