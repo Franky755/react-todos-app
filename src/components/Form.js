@@ -10,25 +10,43 @@ const Form = () => {
   const [editJobIndex, setEditJobIndex] = useState()
   const [editJob, setEditJob] = useState()
   const [data, setData] = useState({ hits: [] });
+  const [showGoToTop, setShowGoToTop] = useState(false)
 
-  //Call API faker Job List
+  // Call API faker Job List
   useEffect(() => {
-    async function fetchDataaa() {
+    async function fetchData() {
       const result = await axios(
-        'https://6375ef7db5f0e1eb85fd6d1b.mockapi.io/api/v1/todo',
+        'https://jsonplaceholder.typicode.com/todos',
       );
-      // console.log(result)
+      console.log(result)
       setJobList(result.data)
     }
-    fetchDataaa();
+    fetchData();
   }, []);
+
+
+  useEffect(() => {
+
+    const handleScroll = () => {
+      if (window.scrollY >= 200) {
+        setShowGoToTop(true)
+      } else {
+        setShowGoToTop(false)
+      }
+      // console.log(window.scrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+  }, []
+  )
 
   useEffect(() => {
     setEditJob(jobList.find((job, index) => index === editJobIndex))
   }, [editJobIndex])
 
   const handleSubmit = () => {
-    setJobList(prev => [...prev, { content: job, status: 'Not Done' }])
+    setJobList(prev => [...prev, { title: job, completed: 'Not Done' }])
     setJob('')
   }
 
@@ -52,14 +70,14 @@ const Form = () => {
   const handleDone = (index) => {
     setJobList(jobList.map((abc, i) => {
       if (index === i) {
-        return { ...abc, status: abc.status === 'Done' ? 'Not Done' : 'Done' }
+        return { ...abc, completed: abc.completed === 'Done' ? 'Not Done' : 'Done' }
       } else {
         return abc
       }
     }))
   }
 
-  // console.log(editJobIndex)
+
   return (
     <div className='form-container'>
       {/* form title */}
@@ -72,7 +90,7 @@ const Form = () => {
           value={job}
           onChange={e => setJob(e.target.value)}
           onKeyPress={handleKeypress}
-          placeholder="What things you are gonna do?"
+          placeholder="What things you are wanna do?"
           focus=""
         />
         <div className='line'></div>
@@ -86,11 +104,11 @@ const Form = () => {
               <input
                 className='new-input'
                 type="text"
-                value={editJob?.content || ''}
+                value={editJob?.title || ''}
                 onKeyDown={handleUpdateJobList}
-                onChange={e => setEditJob({ ...editJob, content: e.target.value })} />
+                onChange={e => setEditJob({ ...editJob, title: e.target.value })} />
               :
-              <div className='job-list'>{job.content}</div>
+              <div className='job-list'>{job.title}</div>
             }
             <button
               className='delete'
@@ -98,20 +116,31 @@ const Form = () => {
               Delete
             </button>
             <button
-              className={job.status === 'Done' ? 'done' : 'not-done'}
+              className={job.completed === 'Done' ? 'done' : 'not-done'}
               onClick={() => handleDone(index)}>
-              {job.status === 'Done' ? 'Done' : 'Not'}
+              {job.completed === 'Done' ? 'Done' : 'Not'}
             </button>
           </div>
         ))}
       </div>
-      {/* <div className='line-bottom'></div> */}
+      <div className='line-bottom'></div>
       {/* summary job statuss */}
-      {/* <div className='sum-status'>
+      <div className='sum-status'>
         <span className='sum_total'>Total Job: 10</span>
         <span className='sum_not-done'>Not-done Job: </span>
         <span className='sum_done'>Done Job: </span>
-      </div> */}
+      </div>
+      {showGoToTop && (
+        <button
+          style={{
+            position: 'fixed',
+            right: 20,
+            bottom: 20,
+          }}
+        >
+          Go to Top
+        </button>
+      )}
     </div>
   )
 }
