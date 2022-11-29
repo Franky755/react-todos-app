@@ -1,0 +1,32 @@
+.form-add-todo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 71%;
+  max-width: 600px;
+
+}
+
+.form-input-todo {
+  flex-basis: 8;
+  width: 90%;
+  height: 2.5rem;
+
+  font-size: 1.1rem;
+  padding: 5px 10px;
+  margin-right: 20px;
+  border-radius: 5px;
+  border: none;
+}
+
+.btn-submit-input {
+  width: 160px;
+  background-color: #c44569;
+  border: none;
+
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #ccc;
+}
+

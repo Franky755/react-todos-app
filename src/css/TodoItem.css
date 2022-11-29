@@ -1,0 +1,45 @@
+.list-group-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 580px;
+  height: 3rem;
+
+  margin: auto;
+
+  margin-bottom: 10px;
+  background-color: #82ccdd;
+
+  border-radius: 5px;
+}
+
+.item{
+  width: 70%;
+
+  font-size: 1.2rem;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-delete{
+  width: 80px;
+  margin-right: 10px;
+  height: 2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #535c68;
+  color: #ccc;
+}
+
+.checkbox{
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+  background-image: #c44569;
+  cursor: pointer;
+}
+
+
