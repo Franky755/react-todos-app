@@ -18,15 +18,14 @@ const TodoItem = ({ id, title, completed }) => {
 
 	return (
 		<div className={`${completed && 'list-group-item-success'}`}>
-			<div className='list-group-item'>
+			<div className={`list-group-item group-${completed}`}>
 				<input
 					type='checkbox'
 					className='checkbox'
-					onClick={handleCheckboxClick}
-					checked={completed}
+					onChange={handleCheckboxClick}
+					checked={completed ? true : false}
 				></input>
-				<span className='item'>
-
+				<span className={`item title-${completed}`}>
 					{title}
 				</span>
 				<button onClick={handleDeleteClick} className='btn btn-delete'>

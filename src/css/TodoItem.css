@@ -1,4 +1,4 @@
-.list-group-item{
+.list-group-item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -14,7 +14,7 @@
   border-radius: 5px;
 }
 
-.item{
+.item {
   width: 70%;
 
   font-size: 1.2rem;
@@ -24,7 +24,7 @@
   text-overflow: ellipsis;
 }
 
-.btn-delete{
+.btn-delete {
   width: 80px;
   margin-right: 10px;
   height: 2rem;
@@ -34,7 +34,7 @@
   color: #ccc;
 }
 
-.checkbox{
+.checkbox {
   width: 25px;
   height: 25px;
   margin-left: 10px;
@@ -42,4 +42,11 @@
   cursor: pointer;
 }
 
+.title-true {
+  text-decoration: line-through;
+}
 
+.group-true {
+  background-color: #7f8c8d;
+  color: black;
+}

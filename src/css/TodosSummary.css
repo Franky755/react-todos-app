@@ -1,7 +1,17 @@
-.sum-todo{
+.sum-todo {
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 80%;
 }
 
+.sum-todo .btn {
+  border: none;
+  width: 120px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #c44569;
+  color: #ccc;
+  margin-bottom: 20px;
+  font-size: 0.8rem;
+}

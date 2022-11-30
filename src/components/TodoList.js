@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
 import TodoItem from './TodoItem';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getTodosAsync } from '../redux/todoSlice';
 
-const TodoList = () => {
+const TodoList = ({ searchData }) => {
 
 	const dispatch = useDispatch();
-	const todos = useSelector((state) => state.todos);
 
 	useEffect(() => {
 		dispatch(getTodosAsync());
 	}, [dispatch]);
 
 	return (
-		<div className='list-group'>
-			{todos.map((todo, index) => (
-				<TodoItem id={todo.id} title={todo.title} completed={todo.completed}/>
+		<div className='list-group' >
+			{searchData.map((todo, index) => (
+				<TodoItem key={index} id={todo.id} title={todo.title} completed={todo.completed} />
 			))}
 		</div>
 	);
